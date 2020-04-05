@@ -4,7 +4,8 @@
   "description": "A Mac & Windows Desktop App for Overcast with Media Key Support",
   "main": "main.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "electron-packager . Undercast --out dist/ --platform win32,darwin"
   },
   "repository": {
     "type": "git",
@@ -22,8 +23,11 @@
   "author": "Stuart Jones",
   "license": "MIT",
   "dependencies": {
-    "electron": "1.6.16",
     "electron-default-menu": "^1.0.1",
     "menubar": "5.2.3"
+  },
+  "devDependencies": {
+    "electron": "1.6.16",
+    "electron-packager": "^14.2.1"
   }
 }
