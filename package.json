@@ -5,7 +5,8 @@
   "main": "main.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "electron-packager . Undercast --out dist/ --platform win32,darwin"
+    "build": "electron-packager . Undercast --out dist/ --asar --platform win32,darwin",
+    "start": "electron ."
   },
   "repository": {
     "type": "git",
