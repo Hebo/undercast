@@ -32,7 +32,8 @@ var options = {
 var mb = menubar(options);
 
 // Options Variables.
-var keysBound = true;
+var mediaKeysBound = true;
+var functionKeysBound = false;
 var indicator = true;
 var isPlaying = false;
 
@@ -64,14 +65,27 @@ const rcMenuTemplate = [
   {
     label: "Bind Media Keys",
     type: "checkbox",
-    checked: keysBound,
+    checked: mediaKeysBound,
     click() {
-      if (keysBound) {
-        unregisterKeys();
+      if (mediaKeysBound) {
+        unregisterKeys("media");
       } else {
-        registerKeys();
+        registerKeys("media");
       }
-      keysBound = !keysBound;
+      mediaKeysBound = !mediaKeysBound;
+    },
+  },
+  {
+    label: "Bind Function Keys",
+    type: "checkbox",
+    checked: functionKeysBound,
+    click() {
+      if (functionKeysBound) {
+        unregisterKeys("function");
+      } else {
+        registerKeys("function");
+      }
+      functionKeysBound = !functionKeysBound;
     },
   },
   {
@@ -101,25 +115,52 @@ const rcMenuTemplate = [
 const rcMenu = Menu.buildFromTemplate(rcMenuTemplate);
 
 // Create global media key shortcuts.
-var registerKeys = function () {
-  const reg = globalShortcut.register("MediaPlayPause", () => {
-    // Media keys trigger javascript functions in the index.html file.
-    mb.window.webContents.executeJavaScript("playpause()");
-  });
-  const regStop = globalShortcut.register("MediaStop", () => {
-    mb.window.webContents.executeJavaScript("stop()");
-  });
-  const regNext = globalShortcut.register("MediaNextTrack", () => {
-    mb.window.webContents.executeJavaScript("next()");
-  });
-  const regPrevious = globalShortcut.register("MediaPreviousTrack", () => {
-    mb.window.webContents.executeJavaScript("previous()");
-  });
+var registerKeys = function (keySet) {
+  if (keySet === "function") {
+    const reg = globalShortcut.register("F8", () => {
+      // Media keys trigger javascript functions in the index.html file.
+      mb.window.webContents.executeJavaScript("playpause()");
+    });
+    const regStop = globalShortcut.register("MediaStop", () => {
+      mb.window.webContents.executeJavaScript("stop()");
+    });
+    const regNext = globalShortcut.register("MediaNextTrack", () => {
+      mb.window.webContents.executeJavaScript("next()");
+    });
+    const regPrevious = globalShortcut.register("MediaPreviousTrack", () => {
+      mb.window.webContents.executeJavaScript("previous()");
+    });
+  } else {
+    const reg = globalShortcut.register("MediaPlayPause", () => {
+      // Media keys trigger javascript functions in the index.html file.
+      mb.window.webContents.executeJavaScript("playpause()");
+    });
+    const regStop = globalShortcut.register("MediaStop", () => {
+      mb.window.webContents.executeJavaScript("stop()");
+    });
+    const regNext = globalShortcut.register("MediaNextTrack", () => {
+      mb.window.webContents.executeJavaScript("next()");
+    });
+    const regPrevious = globalShortcut.register("MediaPreviousTrack", () => {
+      mb.window.webContents.executeJavaScript("previous()");
+    });
+  }
 };
 
 // Unregister media keys.
-var unregisterKeys = function () {
-  globalShortcut.unregisterAll();
+var unregisterKeys = function (keySet) {
+  if (keySet === "function") {
+    globalShortcut.unregister("F7");
+    globalShortcut.unregister("F8");
+    globalShortcut.unregister("F9");
+  } else if (keySet === "media") {
+    globalShortcut.unregister("MediaPlayPause");
+    globalShortcut.unregister("MediaStop");
+    globalShortcut.unregister("MediaNextTrack");
+    globalShortcut.unregister("MediaPreviousTrack");
+  } else {
+    globalShortcut.unregisterAll();
+  }
 };
 
 // Show window when the app first runs.
