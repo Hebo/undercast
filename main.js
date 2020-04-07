@@ -15,10 +15,11 @@ const path = require("path");
 const url = require("url");
 
 // Declare Menubar and Options.
+let mainIconPath;
 if (process.platform === "win32") {
-  const mainIconPath = path.join(__dirname, "assets/iconWhite.png");
+  mainIconPath = path.join(__dirname, "assets/iconWhite.png");
 } else {
-  const mainIconPath = path.join(__dirname, "assets/iconTemplate.png");
+  mainIconPath = path.join(__dirname, "assets/iconTemplate.png");
 }
 const playingIconPath = path.join(__dirname, "assets/iconOrange.png");
 
