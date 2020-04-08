@@ -31,11 +31,7 @@ Using Electron, Undercast creates a sandboxed instance of [Overcast.fm](https://
 
 # Getting Undercast
 
-Precompiled builds of Undercast are located in the `/releases` folder. Simply unzip them and launch the .app or .exe file.
-
-[Current Mac Release](https://github.com/ImStuartJones/undercast/raw/master/releases/Undercast.app.zip)
-
-[Current Windows Release](https://github.com/ImStuartJones/undercast/raw/master/releases/undercast-win32-x64.zip)
+Precompiled builds of Undercast are located in the [Releases](https://github.com/Hebo/undercast/releases/) page. Simply download them and launch the .dmg or .exe file.
 
 # Building It Yourself
 
