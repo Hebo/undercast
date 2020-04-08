@@ -1,13 +1,28 @@
 {
   "name": "undercast",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "A Mac & Windows Desktop App for Overcast with Media Key Support",
   "main": "main.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "electron-packager . Undercast --out dist/ --asar --platform win32,darwin",
     "clean": "rm -rf dist/*",
+    "dist": "electron-builder --windows --mac",
     "start": "electron ."
+  },
+  "build": {
+    "appId": "undercast",
+    "productName": "Undercast",
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        }
+      ],
+      "icon": "build/icon.ico"
+    }
   },
   "repository": {
     "type": "git",
@@ -30,6 +45,6 @@
   },
   "devDependencies": {
     "electron": "1.6.16",
-    "electron-packager": "^14.2.1"
+    "electron-builder": "^22.4.1"
   }
 }

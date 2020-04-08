@@ -39,20 +39,14 @@ Precompiled builds of Undercast are located in the `/releases` folder. Simply un
 
 # Building It Yourself
 
-Undercast is a standard straightforward Electron application. Run `npm install` to download the necessary Node packages, then run `./node_modules/.bin/electron .` to launch the application.
+Undercast is a standard straightforward Electron application. Run `yarn install` to download the necessary Node packages, then run `yarn start` to launch the application.
 
 ## Compiling for Production
 
-Compiling the application for production can be done by first installing Windows dependencies
+Compiling the application for production can be done with
 
 ```
-brew cask install wine-stable
-```
-
-Build the releases
-
-```
-yarn build
+yarn dist
 ```
 
 # Disclaimer
