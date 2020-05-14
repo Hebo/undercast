@@ -121,13 +121,10 @@ var registerKeys = function (keySet) {
       // Media keys trigger javascript functions in the index.html file.
       mb.window.webContents.executeJavaScript("playpause()");
     });
-    const regStop = globalShortcut.register("MediaStop", () => {
-      mb.window.webContents.executeJavaScript("stop()");
-    });
-    const regNext = globalShortcut.register("MediaNextTrack", () => {
+    const regNext = globalShortcut.register("F9", () => {
       mb.window.webContents.executeJavaScript("next()");
     });
-    const regPrevious = globalShortcut.register("MediaPreviousTrack", () => {
+    const regPrevious = globalShortcut.register("F7", () => {
       mb.window.webContents.executeJavaScript("previous()");
     });
   } else {
