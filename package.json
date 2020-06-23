@@ -41,7 +41,8 @@
   "license": "MIT",
   "dependencies": {
     "electron-default-menu": "^1.0.1",
-    "menubar": "5.2.3"
+    "menubar": "5.2.3",
+    "mousetrap": "^1.6.5"
   },
   "devDependencies": {
     "electron": "1.8.8",

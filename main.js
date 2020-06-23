@@ -25,8 +25,8 @@ const playingIconPath = path.join(__dirname, "assets/iconOrange.png");
 
 var options = {
   icon: mainIconPath,
-  width: 300,
-  height: 400,
+  width: 320,
+  height: 800,
   preloadWindow: true,
 };
 var mb = menubar(options);
@@ -174,6 +174,7 @@ mb.on("ready", function ready() {
 // Register the media keys and tray menu once the app starts.
 mb.on("after-create-window", function () {
   registerKeys();
+
   mb.tray.on("right-click", function () {
     mb.tray.popUpContextMenu(rcMenu);
   });
