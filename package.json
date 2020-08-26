@@ -1,13 +1,14 @@
 {
   "name": "undercast",
-  "version": "1.2.1",
+  "version": "1.2.10",
   "description": "A Mac & Windows Desktop App for Overcast with Media Key Support",
   "main": "main.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "clean": "rm -rf dist/*",
     "dist": "electron-builder --windows --mac",
-    "start": "electron ."
+    "start": "electron .",
+    "osx": "yarn dist && open $(ls -1 dist/*.dmg | tail -n1)"
   },
   "build": {
     "appId": "undercast",
@@ -40,12 +41,13 @@
   "author": "Stuart Jones",
   "license": "MIT",
   "dependencies": {
+    "@electron/remote": "^1.0.0",
     "electron-default-menu": "^1.0.1",
-    "menubar": "5.2.3",
+    "menubar": "9.0.1",
     "mousetrap": "^1.6.5"
   },
   "devDependencies": {
-    "electron": "1.8.8",
+    "electron": "10.0.0",
     "electron-builder": "^22.4.1"
   }
 }

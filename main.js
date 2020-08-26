@@ -7,8 +7,9 @@ const globalShortcut = electron.globalShortcut;
 const webContents = electron.webContents;
 const remote = electron.remote;
 const Menu = electron.Menu;
-const menubar = require("menubar");
+const { menubar } = require("menubar");
 const defaultMenu = require("electron-default-menu");
+require("@electron/remote/main").initialize();
 
 // Helper Functions.
 const path = require("path");
@@ -25,8 +26,15 @@ const playingIconPath = path.join(__dirname, "assets/iconOrange.png");
 
 var options = {
   icon: mainIconPath,
-  width: 320,
-  height: 800,
+  browserWindow: {
+    width: 380,
+    height: 800,
+    webPreferences: {
+      nodeIntegration: true,
+      webviewTag: true,
+      enableRemoteModule: true,
+    },
+  },
   preloadWindow: true,
 };
 var mb = menubar(options);
